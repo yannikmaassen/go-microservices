@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-net
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-net
+
+  order-service:
+    build:
+      context: ./order-service
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-net
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
+
